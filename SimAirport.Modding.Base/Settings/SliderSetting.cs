@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace SimAirport.Modding.Base.Settings {
 	/// <summary>
-	/// Setting for a string, will be displayed as a textbox.
+	/// Setting for a float value, will be displayed as slider.
 	/// </summary>
-	public class StringSetting : SettingBase<string> {
+	public class SliderSetting : SettingBase<float> {
 		public override string Name { get; set; }
 
-		public string Placeholder { get; set; }
+		public float Minimum { get; set; }
 
-		private string _value;
-		public override string Value {
+		public float Maximum { get; set; } = 1f;
+
+		private float _value;
+		public override float Value {
 			get => _value;
 			set {
 				if (value != _value) {
@@ -24,6 +26,6 @@ namespace SimAirport.Modding.Base.Settings {
 			}
 		}
 
-		public override Action<string> OnValueChanged { get; set; }
+		public override Action<float> OnValueChanged { get; set; }
 	}
 }
