@@ -37,5 +37,10 @@ namespace SimAirport.Modding.Base
 		/// Use wisely as heavy load slows down the game!
 		/// </summary>
 		public abstract void OnTick();
+
+		/// <summary>
+		/// Executed after settings are loaded, you can add settings or change them at this point.
+		/// </summary>
+		public virtual void OnSettingsLoaded() { }
 	}
 }

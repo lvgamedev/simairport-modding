@@ -18,7 +18,7 @@ namespace SimAirport.Modding.Base.Settings {
 			get => _value;
 			set {
 				if (value != _value) {
-					OnValueChanged(value);
+					OnValueChanged?.Invoke(value);
 					_value = value;
 				}
 			}

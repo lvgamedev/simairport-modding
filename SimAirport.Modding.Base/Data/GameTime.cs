@@ -21,7 +21,6 @@ namespace SimAirport.Modding.Base.Data {
 			InternalTotalGameSeconds = internalTotalGameSeconds;
 		}
 
-
 		/// <summary>
 		/// Returns the total time this game has been running in in game seconds
 		/// </summary>
