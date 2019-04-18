@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace SimAirport.Modding.Base.Settings {
 			}
 		}
 
+		[JsonIgnore]
 		public override Action<string> OnValueChanged { get; set; }
 	}
 }
