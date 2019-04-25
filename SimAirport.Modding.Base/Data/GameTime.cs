@@ -14,7 +14,7 @@ namespace SimAirport.Modding.Base.Data {
 		public GameTime(Func<double> internalTotalGameSeconds) {
 			//Only one instance can be created, it'll be created by the game.
 			if (Instance != null)
-				return;
+				throw new InvalidOperationException("Tried to create 2nd " + GetType().Name);
 
 			Instance = this;
 
