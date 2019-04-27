@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SimAirport.Modding.Data;
+using System.Collections.Generic;
 
 namespace SimAirport.Modding.Base
 {
@@ -31,6 +32,12 @@ namespace SimAirport.Modding.Base
 		/// be deleted aswell.
 		/// </summary>
 		public abstract List<Settings.SettingBase> Settings { get; set; }
+
+		/// <summary>
+		/// Called when the mod is loaded. This may be called several times.
+		/// </summary>
+		/// <param name="state">The current game state</param>
+		public virtual void OnLoad(GameState state) { }
 
 		/// <summary>
 		/// Called once per frame, use to update data that must be updated each fram.

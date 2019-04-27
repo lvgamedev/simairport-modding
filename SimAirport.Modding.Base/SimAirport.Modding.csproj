@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="Base\BaseMod.cs" />
     <Compile Include="Data\EventSystem.cs" />
+    <Compile Include="Data\Game.cs" />
+    <Compile Include="Data\GameState.cs" />
     <Compile Include="Data\GameTime.cs" />
     <Compile Include="Data\Graphics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

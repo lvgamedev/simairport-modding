@@ -21,6 +21,11 @@ namespace SimAirport.Modding.Data {
 		/// <summary>
 		/// UI level change, provides new level.
 		/// </summary>
-		public Action<int> OnLevelChanged;
+		public Action<int> OnLevelChanged { get; set; }
+
+		/// <summary>
+		/// State change, provides the new state.
+		/// </summary>
+		public Action<GameState> OnStateChanged { get; set; }
 	}
 }
