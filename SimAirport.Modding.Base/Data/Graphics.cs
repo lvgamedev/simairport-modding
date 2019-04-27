@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace SimAirport.Modding.Base.Data {
+namespace SimAirport.Modding.Data {
 	/// <summary>
 	/// Access to in-game graphics
 	/// </summary>

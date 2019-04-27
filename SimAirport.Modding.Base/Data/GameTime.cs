@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimAirport.Modding.Base.Data {
+namespace SimAirport.Modding.Data {
 	/// <summary>
 	/// Gives access to GameTime
 	/// </summary>

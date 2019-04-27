@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimAirport.Modding.Base.Settings {
+namespace SimAirport.Modding.Settings {
 	/// <summary>
 	/// Setting for a string, will be displayed as a textbox.
 	/// </summary>

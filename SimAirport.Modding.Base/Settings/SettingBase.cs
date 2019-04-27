@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimAirport.Modding.Base.Settings {
+namespace SimAirport.Modding.Settings {
 	public abstract class SettingBase {}
 
     public abstract class SettingBase<T> : SettingBase {
