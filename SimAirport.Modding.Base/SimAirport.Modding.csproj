@@ -54,6 +54,7 @@
     <Compile Include="Data\GameState.cs" />
     <Compile Include="Data\GameTime.cs" />
     <Compile Include="Data\Graphics.cs" />
+    <Compile Include="Data\Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\SettingBase.cs" />
     <Compile Include="Settings\SliderSetting.cs" />
