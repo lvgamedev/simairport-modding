@@ -34,13 +34,15 @@ namespace SimAirport.Modding.Base
 		public abstract List<Settings.SettingBase> Settings { get; set; }
 
 		/// <summary>
-		/// Called when the mod is loaded. This may be called several times.
+		/// Called when the mod is loaded.
+		/// This may be called from the menu or in-game but will only be called once.
 		/// </summary>
 		/// <param name="state">The current game state</param>
 		public virtual void OnLoad(GameState state) { }
 
 		/// <summary>
 		/// Called once per frame, use to update data that must be updated each fram.
+		/// Only called in-game, never from menu.
 		/// Use wisely as heavy load slows down the game!
 		/// </summary>
 		public abstract void OnTick();
