@@ -8,7 +8,7 @@ namespace SimAirport.Modding.Data {
 	public class Game {
 		public static Game Instance { get; private set; }
 
-		public Game(Func<GameState> internalGetState, Func<int> internalGetMoneyBalance, Action<int> internalSetMoneyBalance) {
+		public Game(Func<GameState> internalGetState, Func<double> internalGetMoneyBalance, Action<double> internalSetMoneyBalance) {
 			if (Instance != null)
 				throw new InvalidOperationException("Tried to create 2nd " + GetType().Name);
 
@@ -22,12 +22,12 @@ namespace SimAirport.Modding.Data {
 		public GameState GetState() => InternalGetState.Invoke();
 		private readonly Func<GameState> InternalGetState;
 
-		public int MoneyBalance {
+		public double MoneyBalance {
 			get => InternalGetMoneyBalance.Invoke();
 			set => InternalSetMoneyBalance.Invoke(value);
 		}
 
-		private readonly Func<int> InternalGetMoneyBalance;
-		private readonly Action<int> InternalSetMoneyBalance;
+		private readonly Func<double> InternalGetMoneyBalance;
+		private readonly Action<double> InternalSetMoneyBalance;
 	}
 }
