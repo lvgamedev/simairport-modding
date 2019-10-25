@@ -27,11 +27,10 @@ namespace SimAirport.Modding.Base
 		public abstract string Author { get; }
 
 		/// <summary>
-		/// A list of settings. Settings will be saved/loaded automatically.
-		/// This list will be filled by the game, add to it, overwrite means all saved settings will
-		/// be deleted aswell.
+		/// Setting manager, created by the game after loading the mod.
+		/// Will be set and filled with settings before running OnSettingsLoaded!
 		/// </summary>
-		public abstract List<Settings.SettingBase> Settings { get; set; }
+		public abstract Settings.SettingManager SettingManager { get; set; }
 
 		/// <summary>
 		/// Called when the mod is loaded.

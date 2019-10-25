@@ -5,9 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SimAirport.Modding.Settings {
-	public abstract class SettingBase {}
+	public abstract class SettingBase {
+		public abstract Type Type { get; }
+
+		public abstract void SetValue(object newValue);
+
+		public abstract object GetValue();
+	}
 
     public abstract class SettingBase<T> : SettingBase {
+		public override Type Type => typeof(T);
+
+		public override void SetValue(object newValue) {
+			if (!(newValue is T newTValue))
+				throw new ArgumentException($"Cannot assign value of type {newValue.GetType()} to setting of type {Type}");
+
+			Value = newTValue;
+		}
+
+		public override object GetValue() => Value;
+
 		/// <summary>
 		/// Name of the variable.
 		/// </summary>
