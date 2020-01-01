@@ -50,5 +50,10 @@ namespace SimAirport.Modding.Base
 		/// Executed after settings are loaded, you can add settings or change them at this point.
 		/// </summary>
 		public virtual void OnSettingsLoaded() { }
+
+		/// <summary>
+		/// Called when the mod is disabled in the mod settings.
+		/// </summary>
+		public virtual void OnDisabled() { }
 	}
 }

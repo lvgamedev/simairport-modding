@@ -35,6 +35,16 @@ namespace SimAirport.Modding.Settings {
 			return false;
 		}
 
+		/// <summary>
+		/// Gets the current value, if it doesn't exist returns the default value
+		/// </summary>
+		public T GetOrDefault<T>(string key, T defaultValue) where T : class {
+			if (TryGetSetting<T>(key, out var tSetting))
+				return tSetting;
+
+			return defaultValue;
+		}
+
 		public Dictionary<string, SettingBase> GetAll() => settings;
 
 		public bool UpdateValue<T>(string key, T value) {
