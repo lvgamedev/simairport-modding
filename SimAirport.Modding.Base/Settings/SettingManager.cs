@@ -22,7 +22,7 @@ namespace SimAirport.Modding.Settings {
 
 		public bool TryGetSetting<T>(string key, out T tSetting) where T : class {
 			if (!settings.TryGetValue(key, out var setting)) {
-				tSetting = default(T);
+				tSetting = default;
 				return false;
 			}
 
@@ -31,7 +31,7 @@ namespace SimAirport.Modding.Settings {
 				return true;
 			}
 
-			tSetting = default(T);
+			tSetting = default;
 			return false;
 		}
 
@@ -60,7 +60,7 @@ namespace SimAirport.Modding.Settings {
 
 		public bool TryGetValue<T>(string key, out T value) {
 			if (!settings.TryGetValue(key, out var setting) || setting.Type != typeof(T)) {
-				value = default(T);
+				value = default;
 				return false;
 			}
 
