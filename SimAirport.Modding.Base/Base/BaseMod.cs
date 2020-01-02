@@ -55,5 +55,15 @@ namespace SimAirport.Modding.Base
 		/// Called when the mod is disabled in the mod settings.
 		/// </summary>
 		public virtual void OnDisabled() { }
+
+		/// <summary>
+		/// Called before the airport is saved, return whatever you want to be saved for this airport!
+		/// </summary>
+		public virtual Dictionary<string, object> OnAirportSaving() => null;
+
+		/// <summary>
+		/// Called after the airport loaded, contains any saved data you passed for this airport.
+		/// </summary>
+		public virtual void OnAirportLoaded(Dictionary<string, object> saveData) { }
 	}
 }
