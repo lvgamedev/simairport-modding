@@ -20,7 +20,10 @@ namespace SimAirport.Modding.Settings {
 				settings.Add(key, setting);
 		}
 
-		public bool TryGetSetting<T>(string key, out T tSetting) where T : class {
+		/// <summary>
+		/// Gets a specific Setting (not Value).
+		/// </summary>
+		public bool TryGetSetting<T>(string key, out T tSetting) where T : SettingBase {
 			if (!settings.TryGetValue(key, out var setting)) {
 				tSetting = default;
 				return false;
@@ -38,12 +41,14 @@ namespace SimAirport.Modding.Settings {
 		/// <summary>
 		/// Gets the current value, if it doesn't exist returns the default value
 		/// </summary>
-		public T GetOrDefault<T>(string key, T defaultValue) where T : class {
-			if (TryGetSetting<T>(key, out var tSetting))
-				return tSetting;
+		public T GetOrDefault<T>(string key, T defaultValue) {
+			if (TryGetValue<T>(key, out var tValue))
+				return tValue;
 
 			return defaultValue;
 		}
+
+		public void RemoveSetting(string key) => settings.Remove(key);
 
 		public Dictionary<string, SettingBase> GetAll() => settings;
 
