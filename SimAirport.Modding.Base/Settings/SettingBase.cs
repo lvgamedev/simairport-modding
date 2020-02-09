@@ -11,6 +11,12 @@ namespace SimAirport.Modding.Settings {
 		public abstract void SetValue(object newValue);
 
 		public abstract object GetValue();
+
+		/// <summary>
+		/// Order by which the game sorts your settings.
+		/// Ordered by decending, higher order equals a higher position in the UI.
+		/// </summary>
+		public int SortOrder { get; set; }
 	}
 
     public abstract class SettingBase<T> : SettingBase {
