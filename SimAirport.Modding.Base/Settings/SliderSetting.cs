@@ -16,6 +16,13 @@ namespace SimAirport.Modding.Settings {
 
 		public float Maximum { get; set; } = 1f;
 
+		public int Stepping { get; set; }
+
+		/// <summary>
+		/// The format to use when displaying the current number on the right side of a Slider.
+		/// </summary>
+		public string ValueFormat { get; set; } = "N";
+
 		private float _value;
 		public override float Value {
 			get => _value;
