@@ -92,5 +92,15 @@ namespace SimAirport.Modding.Settings {
 			value = s.Value;
 			return true;
 		}
+
+		public bool TryGetBool(string key, out bool value) {
+			if (!settings.TryGetValue(key, out var setting) || !(setting is CheckboxSetting s)) {
+				value = false;
+				return false;
+			}
+
+			value = s.Value;
+			return true;
+		}
 	}
 }
