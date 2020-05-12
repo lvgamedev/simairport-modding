@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace SimAirport.Modding.Settings {
 	public class DropdownSetting : SettingBase<int> {
@@ -29,7 +28,6 @@ namespace SimAirport.Modding.Settings {
 		/// </summary>
 		public List<string> Options { get; set; }
 
-		[JsonIgnore]
 		public override Action<int> OnValueChanged { get; set; }
 	}
 }
