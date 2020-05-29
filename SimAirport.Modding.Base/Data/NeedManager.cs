@@ -3,9 +3,7 @@ using System;
 
 namespace SimAirport.Modding.Data {
     public class NeedManager {
-
         public static NeedManager Instance { get; private set; }
-
 
         /// <summary>
         /// Creates singleton of this manager.
@@ -22,7 +20,6 @@ namespace SimAirport.Modding.Data {
             InternalUnregisterNeed = internalUnregisterNeed;
         }
 
-
         /// <summary>
         /// Register a new need to the game.
         /// </summary>
@@ -31,7 +28,6 @@ namespace SimAirport.Modding.Data {
             InternalRegisterNeed(typeof(T));
         }
         private readonly Action<Type> InternalRegisterNeed;
-
 
         /// <summary>
         /// Unregisters the given need.

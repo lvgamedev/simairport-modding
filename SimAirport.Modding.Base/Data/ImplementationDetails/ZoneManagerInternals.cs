@@ -2,17 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TerrainTools;
 using UnityEngine;
 
 namespace SimAirport.Modding.Data.NewInternals {
-    class ZoneManagerInternals {
+    internal static class ZoneManagerInternals {
         /*
-        * The following is just for pipelining type information through Zone.ZoneType Enum
-        */
-        private static readonly int zone_type_id_start = 1000;
+         * The following is just for pipelining type information through Zone.ZoneType Enum
+         */
+        private const int zone_type_id_start = 1000;
         private static int _nextFreeZoneId = zone_type_id_start;
         private static int NextFreeZoneId {
             get {
@@ -20,7 +18,7 @@ namespace SimAirport.Modding.Data.NewInternals {
             }
         }
 
-        private static Dictionary<Zone.ZoneType, string> ZoneTypeToUniqueId = new Dictionary<Zone.ZoneType, string>();
+        private static readonly Dictionary<Zone.ZoneType, string> ZoneTypeToUniqueId = new Dictionary<Zone.ZoneType, string>();
         internal static bool IsZoneTypeModding(Zone.ZoneType type) {
             return (int) type >= zone_type_id_start;
         }
@@ -40,10 +38,8 @@ namespace SimAirport.Modding.Data.NewInternals {
          * Pipeline Helpers End
          */
 
-
         // Map which Zone type is instanciated by which modded zone tool
         internal static Dictionary<string, Type> ToolToZoneType = new Dictionary<string, Type>();
-
 
         public static ZoneTool InternalRegisterZone(Type zoneType, string uniqueId, ZoneToolConfig config) { // where Type : Zone
             ZoneTool.LoadAll(); // force load of vanilla zones, else they will never be loaded!
@@ -52,10 +48,8 @@ namespace SimAirport.Modding.Data.NewInternals {
             if( !ZTools.TryGetValue(uniqueId, out ZoneTool zoneTool) ) {
                 zoneTool = ScriptableObject.CreateInstance<ZoneTool>();
 
-
                 config.zone_type = (Zone.ZoneType) NextFreeZoneId;  // currently missusing it to transport information to Zone.Create
                 config.zone_type = Zone.ZoneType.Modded;           // this is what you have suggested
-
 
                 zoneTool.zone_config = config;
 
@@ -63,7 +57,6 @@ namespace SimAirport.Modding.Data.NewInternals {
                 zoneTool.uniqueID = uniqueId;
                 zoneTool.i18nNameKey = config.I18nNameKey;
                 zoneTool.i18nDescKey = config.I18nDescKey;
-
 
                 ZoneTypeToUniqueId.Add(config.zone_type, uniqueId);
 
@@ -73,8 +66,6 @@ namespace SimAirport.Modding.Data.NewInternals {
             }
             return zoneTool;
         }
-
-
 
         public static void InternalUnregisterZone(ZoneTool zoneTool) {
             var ZTools = ZonePatches.GetZTools();

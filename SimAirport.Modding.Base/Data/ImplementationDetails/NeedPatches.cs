@@ -3,18 +3,13 @@ using Newtonsoft.Json;
 using System;
 
 namespace SimAirport.Modding.Data.NewInternals {
-    class NeedPatches {
-
-
+    internal static class NeedPatches {
         /// <summary>
-        /// Interface which modded needs _must_ implemenent.
-        /// 
-        /// It provides hooks for the ingame logic to call custom behaviour.
-        /// 
-        /// May be integrated directly into Needs.Need class?
+        /// <para>Interface which modded needs _must_ implemenent.</para>
+        /// <para>It provides hooks for the ingame logic to call custom behaviour.</para>
+        /// <para>May be integrated directly into Needs.Need class?</para>
         /// </summary>
         public class Need_Modifications : Need {
-
             /// <summary>
             /// Translation key for the need's name.
             /// </summary>
@@ -32,15 +27,12 @@ namespace SimAirport.Modding.Data.NewInternals {
                 }
             }
 
-
             /// <summary>
             /// Called for each new agent (like pax, executives) to configure the need for
             /// each individually.
             /// </summary>
             public virtual void Configure() { }
         }
-
-
 
         /***
             * Attach hook to NeedManager.AddAllNeeds
@@ -52,10 +44,10 @@ namespace SimAirport.Modding.Data.NewInternals {
             */
         [HarmonyPatch(typeof(NeedManager))]
         [HarmonyPatch("AddAllNeeds")]
-        static class NeedManager_AddAllNeeds {
+        internal static class NeedManager_AddAllNeeds {
             //private void AddAllNeeds()
 
-            static void Postfix(global::Needs.NeedManager __instance) {
+            public static void Postfix(global::Needs.NeedManager __instance) {
                 foreach( var needType in NeedManagerInternals.customNeedTypes ) {
                     // NeedManager.Add<> is private and looking it up is more complex than just reimplement add.
                     // This block is almost identical to NeedManager.Add<T>
@@ -79,10 +71,10 @@ namespace SimAirport.Modding.Data.NewInternals {
             */
         [HarmonyPatch(typeof(global::Needs.NeedManager))]
         [HarmonyPatch(nameof(global::Needs.NeedManager.Configure))]
-        static class NeedManager_Configure {
+        internal static class NeedManager_Configure {
             //public void Configure()
 
-            static void Postfix(global::Needs.NeedManager __instance) {
+            public static void Postfix(global::Needs.NeedManager __instance) {
                 foreach( var need in __instance.needs ) {
                     need.Configure();
                 }

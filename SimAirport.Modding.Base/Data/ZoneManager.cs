@@ -3,9 +3,7 @@ using TerrainTools;
 
 namespace SimAirport.Modding.Data {
     public class ZoneManager {
-
         public static ZoneManager Instance { get; private set; }
-
 
         /// <summary>
         /// Creates singleton of this manager.
@@ -22,21 +20,17 @@ namespace SimAirport.Modding.Data {
             InternalUnregisterZone = internalUnregisterZone;
         }
 
-
         /// <summary>
         /// Registers a new zone.
         /// </summary>
         /// <typeparam name="T">Zone Derivative with zone's logic</typeparam>
-        /// <param name="config"></param>
         /// <param name="uniqueId">globally unique zone identifier</param>
-        /// <param name="i18nNameKey">zone name shown in menu and as overlay</param>
-        /// <param name="i18nDescKey">description of the zone in the build menu</param>
+        /// <param name="config"></param>
         /// <returns>Zone Tool instance representing the new build tool</returns>
         public ZoneTool RegisterZone<T>(string uniqueId, ZoneToolConfig config) where T : Zone {
             return InternalRegisterZone(typeof(T), uniqueId, config);
         }
         private readonly Func<Type, string, ZoneToolConfig, ZoneTool> InternalRegisterZone;
-
 
         /// <summary>
         /// Remove a zone tool.
@@ -46,6 +40,5 @@ namespace SimAirport.Modding.Data {
             InternalUnregisterZone(which);
         }
         private readonly Action<ZoneTool> InternalUnregisterZone;
-
     }
 }

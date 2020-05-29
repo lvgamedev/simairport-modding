@@ -2,15 +2,13 @@
 using UnityEngine;
 
 namespace SimAirport.Modding.Data.Example {
-    class ExampleNeed : Need {
+    public class ExampleNeed : Need {
         public string I18nKeyName => "example.need.name";
 
         private readonly NeedConfig agentConfig;
         protected override NeedConfig config => agentConfig;
 
         public override bool impactsSatisfaction => true;
-
-
 
         public ExampleNeed() {
             agentConfig = ScriptableObject.CreateInstance<NeedConfig>();

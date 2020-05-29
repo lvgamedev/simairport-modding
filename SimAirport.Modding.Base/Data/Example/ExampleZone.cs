@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace SimAirport.Modding.Data.ImplementationDetails.Example {
-    class ExampleZone : Zone {
+    public class ExampleZone : Zone {
         protected ExampleZone(ZoneType type) : base(type) {
         }
 
@@ -14,7 +10,6 @@ namespace SimAirport.Modding.Data.ImplementationDetails.Example {
         }
 
         public override bool MeetsRequirements(bool cacheBuster = false) {
-
             if( ShouldCheckRequirements(cacheBuster) ) {
                 base.MeetsRequirements(cacheBuster);
 
@@ -25,7 +20,6 @@ namespace SimAirport.Modding.Data.ImplementationDetails.Example {
 
             return cachedMet;
         }
-
 
         public override StringBuilder GetFormattedErrors() {
             base.GetFormattedErrors();

@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimAirport.Modding.Data.NewInternals {
-    class NeedManagerInternals {
+    internal static class NeedManagerInternals {
         /// <summary>
         /// Internal global list with all modded registered needs.
         /// </summary>

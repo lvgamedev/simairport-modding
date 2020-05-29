@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using SimAirport.Modding.Data.NewInternals;
+﻿using SimAirport.Modding.Data.NewInternals;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -7,8 +6,7 @@ using TerrainTools;
 using UnityEngine;
 
 namespace SimAirport.Modding.Data.ImplementationDetails {
-    class ZonePatches {
-
+    internal static class ZonePatches {
         public class ZoneToolConfig_Modifications : ZoneToolConfig {
             // expected Additions/Changes to ZoneToolConfig:
 
@@ -61,8 +59,6 @@ namespace SimAirport.Modding.Data.ImplementationDetails {
             }
         }
 
-
-
         /***
          * Helper to access ZoneTool.ZTools
          * 
@@ -75,24 +71,20 @@ namespace SimAirport.Modding.Data.ImplementationDetails {
             return ZTools_raw as Dictionary<string, ZoneTool>;
         }
 
-
         /***************************************************
          * 
          *            Zone Type List & Lookup
          * 
          ***************************************************/
 
-
         /***
          * Extend lookup also into modded zones
          */
         [HarmonyPatch(typeof(ZoneToolConfig))]
         [HarmonyPatch(nameof(ZoneToolConfig.GetZoneToolConfigByType))]
-        static class ZoneToolConfig_GetZoneToolConfigByType {
-
-            static void Postfix(ref ZoneToolConfig __result, Zone.ZoneType zt) {
+        internal static class ZoneToolConfig_GetZoneToolConfigByType {
+            public static void Postfix(ref ZoneToolConfig __result, Zone.ZoneType zt) {
                 if( __result == null ) {
-
                     if( ZoneManagerInternals.IsZoneTypeModding(zt) ) {
                         var uid = ZoneManagerInternals.ModdedZoneTypeToUid(zt);
 
@@ -110,9 +102,8 @@ namespace SimAirport.Modding.Data.ImplementationDetails {
         [HarmonyPatch(typeof(Zone))]
         [HarmonyPatch(nameof(Zone.Create))]
         [HarmonyPatch(new Type[] { typeof(Zone.ZoneType), typeof(int) })]
-        static class Patch_Zone_Create_ZoneType {
-
-            static bool Prefix(Zone.ZoneType type, int predetermined_guid, ref Zone __result) {
+        internal static class Patch_Zone_Create_ZoneType {
+            public static bool Prefix(Zone.ZoneType type, int predetermined_guid, ref Zone __result) {
                 // if it's a modded type, delegate to Handler
 
                 if( ZoneManagerInternals.IsZoneTypeModding(type) ) {
@@ -127,7 +118,6 @@ namespace SimAirport.Modding.Data.ImplementationDetails {
             }
         }
 
-
         /***********************************************
          * 
          * The lower stuff is transforming the zone type
@@ -137,7 +127,6 @@ namespace SimAirport.Modding.Data.ImplementationDetails {
          * ZoneType Enum.
          * 
          ***********************************************/
-
 
         /***
          * Translate zone_type (int) => zone name
@@ -151,8 +140,8 @@ namespace SimAirport.Modding.Data.ImplementationDetails {
          * For the ZoneType Enum, it looksup the zone tool name.
          */
         [HarmonyPatch(typeof(Enum), "ToString", new Type[] { })]
-        static class Patch_Enum_ToString {
-            static void Postfix(Enum __instance, ref string __result) {
+        internal static class Patch_Enum_ToString {
+            public static void Postfix(Enum __instance, ref string __result) {
                 if( __instance.GetType().Equals(typeof(Zone.ZoneType)) ) {
                     if( int.TryParse(__result, out int asInt) ) {
                         __result = ZoneManagerInternals.ModdedZoneTypeToUid((Zone.ZoneType) asInt);
@@ -160,7 +149,6 @@ namespace SimAirport.Modding.Data.ImplementationDetails {
                 }
             }
         }
-
 
         /***
          * Reverse translation zone name => zone_type (int)
@@ -173,9 +161,8 @@ namespace SimAirport.Modding.Data.ImplementationDetails {
         [HarmonyPatch(typeof(Zone))]
         [HarmonyPatch(nameof(Zone.Create))]
         [HarmonyPatch(new Type[] { typeof(string), typeof(int) })]
-        static class Patch_Zone_Create_string {
-
-            static void Prefix(ref string path_string, int predetermined_guid) {
+        internal static class Patch_Zone_Create_string {
+            public static void Prefix(ref string path_string, int predetermined_guid) {
                 // normal path_string format: ZONE/LOOKUP42
                 // modify path_string, so path_string.Replace("ZONE/", "") => 42
 
@@ -188,7 +175,5 @@ namespace SimAirport.Modding.Data.ImplementationDetails {
                 }
             }
         }
-
-
     }
 }
