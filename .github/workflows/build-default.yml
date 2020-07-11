@@ -24,4 +24,4 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: Compiled Files (Default Branch)
-        path: bin\Release
+        path: SimAirport.Modding.Base\bin\Release
