@@ -18,7 +18,8 @@ jobs:
  
     - name: Build SimAirport.Modding.sln
       run: msbuild SimAirport.Modding.sln /p:Configuration=Release
- 
+    - name: Get all paths (debug)
+      run: tree
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
       with:
