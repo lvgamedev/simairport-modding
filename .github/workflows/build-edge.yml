@@ -1,0 +1,28 @@
+name: Build SimAirport.Modding [Edge Branch]
+ 
+on:
+  push:
+    branches: [edge]
+ 
+jobs:
+  build:
+ 
+    runs-on: windows-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+      name: Checkout Code
+     
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1      
+ 
+    - name: Build SimAirport.Modding.sln
+      run: msbuild SimAirport.Modding.sln /p:Configuration=Release
+    - name: Get all paths (debug)
+      run: tree
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: Compiled Files (Edge Branch)
+        path: SimAirport.Modding.Base\bin\Release
+
