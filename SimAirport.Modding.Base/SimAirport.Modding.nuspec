@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>SimAirport.Modding</id>
+    <version>1.0.0</version>
+    <title>SimAirport Modding Library</title>
+    <authors>LVGamedev</authors>
+    <owners>cal3432</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://store.steampowered.com/app/598330/SimAirport/</projectUrl>
+    <icon>images/nugeticon.png</icon>
+    <description>The SimAirport Modding library that allows you to interface with the game through c#.</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>SimAirport LVGameDev Modding Library Steam</tags>
+  </metadata>
+  <files>
+    <file src=".\nugeticon.png" target="images\" />
+  </files>
+</package>
