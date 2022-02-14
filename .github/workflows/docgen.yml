@@ -10,7 +10,7 @@ jobs:
       - name: Generate documentation
         uses: nikeee/docfx-action@v1.0.0
         with:
-          args: docfx.json -o ./
+          args: docfx.json -o ./docs
       - name: ls pls
         run: ls -l
       - name: Deploy
@@ -20,4 +20,4 @@ jobs:
           CLEAN: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SINGLE_COMMIT: true
-          FOLDER: _site
+          FOLDER: docs
