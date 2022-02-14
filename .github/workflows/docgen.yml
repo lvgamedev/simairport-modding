@@ -10,7 +10,7 @@ jobs:
       - name: Generate documentation
         uses: nikeee/docfx-action@v1.0.0
         with:
-          args: docs/docfx.json
+          args: docfx.json
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
