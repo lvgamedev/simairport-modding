@@ -7,14 +7,10 @@ jobs:
     concurrency: gen-docs
     steps:
       - uses: actions/checkout@v2
-      - name: Install DocFX
-        uses: crazy-max/ghaction-chocolatey@v1
-        with:
-          args: install docfx
       - name: Generate documentation
-        working-directory: docs
-        run: docfx docfx.json
-        continue-on-error: false
+        uses: nikeee/docfx-action@v1.0.0
+        with:
+          args: docs/docfx.json
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
