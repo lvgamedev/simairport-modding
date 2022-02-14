@@ -16,4 +16,4 @@ jobs:
           CLEAN: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SINGLE_COMMIT: true
-          FOLDER: docs/_site
+          FOLDER: _site
