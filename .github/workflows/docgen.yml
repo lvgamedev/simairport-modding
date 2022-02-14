@@ -3,7 +3,7 @@ on:  push
 jobs:
   generate_documentation:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
-    runs-on: ubuntu-20.04
+    runs-on: windows-latest
     concurrency: gen-docs
     steps:
       - uses: actions/checkout@v2
