@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SimAirport.Modding.Data {
 	public class Game {
+		/// <summary>
+		/// The current <see cref="Game"/> instance. Access this to use it's vars/functions
+		/// </summary>
 		public static Game Instance { get; private set; }
 
 		public Game(Func<GameState> internalGetState, Func<double> internalGetMoneyBalance, Action<double> internalSetMoneyBalance) {
@@ -19,9 +22,15 @@ namespace SimAirport.Modding.Data {
 			InternalSetMoneyBalance = internalSetMoneyBalance;
 		}
 
+		/// <summary>
+		/// Returns the current <see cref="GameState">game state</see>.
+		/// </summary>
 		public GameState GetState() => InternalGetState.Invoke();
 		private readonly Func<GameState> InternalGetState;
 
+		/// <summary>
+		/// Access to the game's money balance.
+		/// </summary>
 		public double MoneyBalance {
 			get => InternalGetMoneyBalance.Invoke();
 			set => InternalSetMoneyBalance.Invoke(value);

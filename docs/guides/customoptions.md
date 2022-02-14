@@ -1,6 +1,6 @@
 # Custom Options
 
-Here is a guide onto using `SimAirport.Modding.Settings`, letting the game handle saving of the data.
+Here is a guide onto using `SimAirport.Modding.Settings`, letting the game handle saving and rendering of the data.
 
 ## Setup
 
@@ -48,6 +48,6 @@ namespace name.MyMod
 }
 ```
 
-> Reminder! It's recommended to have a `RemoveSetting()` on all of your keys during development as it saves some value that you might change during development.
+> **Reminder! It's recommended to have a `RemoveSetting()` on all of your keys during development as it saves some value that you might change during development.**
 
 You can find out other setting types in the `SimAirport.Modding.Settings`, all of them are prefixed with `Setting` (eg: `StringSetting`).

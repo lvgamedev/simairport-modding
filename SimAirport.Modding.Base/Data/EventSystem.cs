@@ -9,6 +9,9 @@ namespace SimAirport.Modding.Data {
 	/// Used for Events
 	/// </summary>
 	public class EventSystem {
+		/// <summary>
+		/// The current <see cref="EventSystem"/> instance. Access this to use it's vars/functions
+		/// </summary>
 		public static EventSystem Instance { get; private set; }
 
 		public EventSystem() {

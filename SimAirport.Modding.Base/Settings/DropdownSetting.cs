@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace SimAirport.Modding.Settings {
 	public class DropdownSetting : SettingBase<int> {
+		/// <inheritdoc />
 		public override string Name { get; set; }
 
 		private int _value;
@@ -29,6 +30,7 @@ namespace SimAirport.Modding.Settings {
 		/// </summary>
 		public List<string> Options { get; set; }
 
+		/// <inheritdoc />
 		[JsonIgnore]
 		public override Action<int> OnValueChanged { get; set; }
 	}

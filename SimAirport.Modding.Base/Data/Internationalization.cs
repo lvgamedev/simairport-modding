@@ -5,7 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SimAirport.Modding.Data {
+	/// <summary>
+	/// Access to the game-managed i18n translation library.
+	/// </summary>
 	public class Internationalization {
+		/// <summary>
+		/// The current <see cref="Internationalization"/> instance. Access this to use it's vars/functions
+		/// </summary>
 		public static Internationalization Instance { get; private set; }
 
 		public Internationalization(Func<string, string, string> internalGet) {
@@ -21,7 +27,9 @@ namespace SimAirport.Modding.Data {
 		/// <summary>
 		/// Get a string from the current locale (includes everything from the game and any modded i18n)
 		/// </summary>
-		public void Get(string key, string defaultValue = "") => InternalGet.Invoke(key, defaultValue);
+		/// <param name="key">Translation key</param>
+		/// <param name="defaultValue">Default value, optional.</param>
+		public string Get(string key, string defaultValue = "") => InternalGet.Invoke(key, defaultValue);
 		private readonly Func<string, string, string> InternalGet;
 	}
 }

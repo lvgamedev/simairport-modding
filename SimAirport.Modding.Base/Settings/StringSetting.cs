@@ -10,11 +10,14 @@ namespace SimAirport.Modding.Settings {
 	/// Setting for a string, will be displayed as a textbox.
 	/// </summary>
 	public class StringSetting : SettingBase<string> {
+		/// <inheritdoc />
 		public override string Name { get; set; }
 
+		/// <inheritdoc />
 		public string Placeholder { get; set; }
 
 		private string _value;
+		/// <inheritdoc />
 		public override string Value {
 			get => _value;
 			set {
@@ -25,6 +28,7 @@ namespace SimAirport.Modding.Settings {
 			}
 		}
 
+		/// <inheritdoc />
 		[JsonIgnore]
 		public override Action<string> OnValueChanged { get; set; }
 	}

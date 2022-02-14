@@ -9,6 +9,9 @@ namespace SimAirport.Modding.Data {
 	/// Gives access to GameTime
 	/// </summary>
 	public class GameTime {
+		/// <summary>
+		/// The current <see cref="GameTime"/> instance. Access this to use it's vars/functions
+		/// </summary>
 		public static GameTime Instance { get; private set; }
 
 		public GameTime(Func<double> internalTotalGameSeconds, Func<TimeSpan> internalCurrentGameTime) {

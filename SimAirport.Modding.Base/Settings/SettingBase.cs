@@ -6,10 +6,22 @@ using System.Threading.Tasks;
 
 namespace SimAirport.Modding.Settings {
 	public abstract class SettingBase {
+		/// <summary>
+		/// The type we are currently holding
+		/// </summary>
+		/// <value>A type</value>
 		public abstract Type Type { get; }
 
+		/// <summary>
+		/// Set this setting's value.
+		/// </summary>
+		/// <param name="newValue">New value to set</param>
 		public abstract void SetValue(object newValue);
 
+		/// <summary>
+		/// Get this setting's value.
+		/// </summary>
+		/// <returns>Any value</returns>
 		public abstract object GetValue();
 
 		/// <summary>
@@ -19,9 +31,15 @@ namespace SimAirport.Modding.Settings {
 		public int SortOrder { get; set; }
 	}
 
+	/// <summary>
+	/// Base setting type.
+	/// </summary>
+	/// <typeparam name="T">Any type that can be saved by `Json.Net`.</typeparam>
     public abstract class SettingBase<T> : SettingBase {
+		/// <inheritdoc />
 		public override Type Type => typeof(T);
 
+		/// <inheritdoc />
 		public override void SetValue(object newValue) {
 			if (!(newValue is T newTValue))
 				throw new ArgumentException($"Cannot assign value of type {newValue.GetType()} to setting of type {Type}");
@@ -29,6 +47,7 @@ namespace SimAirport.Modding.Settings {
 			Value = newTValue;
 		}
 
+		/// <inheritdoc />
 		public override object GetValue() => Value;
 
 		/// <summary>
@@ -43,6 +62,13 @@ namespace SimAirport.Modding.Settings {
 
 		/// <summary>
 		/// ValueChanged event, fires when value is changed.
+		/// 
+		/// Example callback:
+		/// ```cs
+		/// OnValueChanged = delegate (val T) {
+		/// 	this.MyMagicalFunction(val);	
+		/// }
+		/// ```
 		/// </summary>
 		public abstract Action<T> OnValueChanged { get; set; }
 	}
