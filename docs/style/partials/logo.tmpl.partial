@@ -1,0 +1,5 @@
+{{!Copyright (c) LetterN. All rights reserved. Licensed under the MIT license. See LICENSE file in the project root for full license information.}}
+
+<a class="navbar-brand" style="align-items: center; display: flex;" href="{{_rel}}index.html">
+  <img id="logo" style="height: 39px" src="{{_rel}}{{{_appLogoPath}}}{{^_appLogoPath}}logo.svg{{/_appLogoPath}}" alt="{{_appName}}" >
+</a>
