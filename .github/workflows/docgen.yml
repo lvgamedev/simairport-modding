@@ -7,10 +7,8 @@ jobs:
     concurrency: gen-docs
     steps:
       - uses: actions/checkout@v2
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 4.7.x
+      # - name: Add msbuild to PATH
+      #   uses: microsoft/setup-msbuild@v1.1
       - name: Install DocFX
         uses: crazy-max/ghaction-chocolatey@v1
         with:
