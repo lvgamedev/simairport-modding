@@ -10,7 +10,7 @@ jobs:
       - name: Generate documentation
         uses: nikeee/docfx-action@v1.0.0
         with:
-          args: ./ -o ./
+          args: docfx.json -o ./
       - name: ls pls
         run: ls -l
       - name: Deploy
